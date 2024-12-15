@@ -6,6 +6,7 @@
         <p class="text-red-700 mb-4">
             En aquest projecte, podràs crear pel·lícules.
         </p>
+        <a href={{route("peliculas.index")}}>
             Començar
         </a>
     </section>
@@ -17,17 +18,8 @@
                 <li>Integració perfecta amb Laravel</li>
                 <li>Components reutilitzables</li>
                 <li>Optimització del rendiment</li>
-                <li>Seguretat millorada</li>
             </ul>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md border border-red-200">
-            <h3 class="text-xl font-semibold text-red-800 mb-2">Recursos</h3>
-            <ul class="list-disc list-inside text-red-700">
-                <li>Documentació detallada</li>
-                <li>Tutorials en vídeo</li>
-                <li>Comunitat de suport</li>
-                <li>Actualitzacions regulars</li>
-            </ul>
-        </div>
+
     </section>
 @endsection

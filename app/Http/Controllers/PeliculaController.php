@@ -38,7 +38,7 @@ class PeliculaController extends Controller
             'presupuesto' => 'required|numeric|min:0',
         ]);
 
-        $movie = pelicula::create($validatedData);
+        $movie = Pelicula::create($validatedData);
 
         return redirect()->route('peliculas.index')->with('success', 'Pel·lícula creada amb èxit.');
     }
@@ -48,18 +48,33 @@ class PeliculaController extends Controller
      */
     public function show($id)
     {
-        $pelicula = pelicula::findOrFail($id);
+        $pelicula = Pelicula::findOrFail($id);
         return view('pelicules.show', compact('pelicula'));
     }
 
     public function edit($id)
     {
-        $pelicula = pelicula::findOrFail($id);
+        $pelicula = Pelicula::findOrFail($id);
+        return view('pelicules.edit', compact('pelicula'));
     }
 
-    public function destroy(Cine $cine)
+    public function update(Request $request, $id)
     {
-        $cine->delete();
+        $validatedData = $request->validate([
+        'nombre' => 'required|max:255',
+        "descripcion" => "required",
+        'duracion' => 'required|integer|min:1',
+        'director' => 'required|max:255',
+        'presupuesto' => 'required|numeric|min:0',
+        ]);
+        $pelicula = Pelicula::findOrFail($id);
+        $pelicula->update($validatedData);
+        return redirect()->route('peliculas.index')->with('succes', 'actualitzzat correctaments');
+    }
+
+    public function destroy(Pelicula $pelicula)
+    {
+        $pelicula->delete();
         return redirect()->route('peliculas.index');
     }
 }

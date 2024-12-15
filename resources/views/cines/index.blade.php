@@ -25,7 +25,9 @@
                 <tr class>
                     <td class="py-2 px-4 border-b text-left text-center">{{ $cine->id }}</td>
                     <td class="py-2 px-4 border-b text-left text-center">{{ $cine->nombre }}</td>
-                    <td class="py-2 px-4 border-b text-left text-center">{{ $cine->activo }}</td>
+                    <td class="py-2 px-4 border-b text-left text-center">
+                        {{ $cine->activo ? 'True' : 'False' }}
+                    </td>
                     <td class="py-2 px-4 border-b text-left text-center">
                         <a href="{{ route('cines.show', $cine->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2">
                             Veure

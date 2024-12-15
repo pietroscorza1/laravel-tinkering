@@ -31,7 +31,7 @@ class CineController extends Controller
     {
         $validatedData = $request->validate([
             'nombre' => 'required',
-            'description' => 'required',
+            'descripcion' => 'required',
             'precio' => 'required',
             'activo' => 'nullable|boolean',
         ]);
@@ -44,25 +44,36 @@ class CineController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cine $cine)
+    public function show($id)
     {
-        //
+        $cine = Cine::findOrFail($id);
+        return view('cines.show', compact('cine'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cine $cine)
+    public function edit($id)
     {
-        //
+        $cine = Cine::findOrFail($id);
+        return view('cines.edit', compact('cine'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cine $cine)
+    public function update(Request $request, $id)
     {
-        //
+        $cine = Cine::FindOrFail($id);
+        $validatedData = $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'precio' => 'required',
+            'activo' => 'nullable|boolean',
+        ]);
+        $validatedData['activo'] = $request->has('activo');
+        $cine->update($validatedData);
+        return redirect('/cines')->with('success', 'Cine updated successfully.');
     }
 
     /**
@@ -70,6 +81,7 @@ class CineController extends Controller
      */
     public function destroy(Cine $cine)
     {
-        //
+        $cine->delete();
+        return redirect('/cines')->with('success', 'Cine deleted successfully.');
     }
 }

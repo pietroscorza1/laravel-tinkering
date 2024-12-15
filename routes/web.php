@@ -19,12 +19,12 @@ Route::put('/peliculas/update/{id}', [PeliculaController::class, 'update'])->nam
 Route::delete('/peliculas/{pelicula}', [PeliculaController::class, 'destroy'])->name('peliculas.destroy');
 
 
-Route::get('/cines  ', [CineController::class, 'index'])->name('cines.index');
+Route::get('/cines', [CineController::class, 'index'])->name('cines.index');
 Route::get('/cines/create', [CineController::class, 'create'])->name('cines.create');
 
 Route::post('/cines', [CineController::class, 'store'])->name('cines.store');
 
 Route::get('/cines/{id}', [CineController::class, 'show'])->name('cines.show');
-Route::get('/cines/{id}/edit', [CineController::class, 'edit'])->name('cines.edit');
+Route::get('/cines/edit/{id}', [CineController::class, 'edit'])->name('cines.edit');
 Route::put('/cines/update/{id}', [CineController::class, 'update'])->name('cines.update');
-Route::delete('/cines/{pelicula}', [CineController::class, 'destroy'])->name('cines.destroy');
+Route::delete('/cines/{cine}', [CineController::class, 'destroy'])->name('cines.destroy');
